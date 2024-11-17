@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 use Shibanashiqc\DtdcCourierPhpSdk\DTDC;
 
-$client = new DTDC('', x_access_token: '');
+$client = new DTDC('',  '', false);
 $client->setCustomerCode('');
 
 $response = $client->base->cancelShipment([

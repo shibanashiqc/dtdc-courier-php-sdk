@@ -4,7 +4,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Shibanashiqc\DtdcCourierPhpSdk\DTDC;
 use Shibanashiqc\DtdcCourierPhpSdk\Config;
 
-$client = new DTDC('your_api_key', 'your_access_token');
+$client = new DTDC('your_api_key', 'your_access_token', false);
 $client->setCustomerCode('customer_code');
 
 Config::setShippingInfo([
