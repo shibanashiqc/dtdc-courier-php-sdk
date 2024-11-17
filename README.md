@@ -113,6 +113,14 @@ $response = $client->base->getTrackingStatus('7X6548766');
 print_r($response);
 ```
 
+### cancelShipment
+```php
+$response = $client->base->cancelShipment([
+    "D78326386"
+]);
+print_r($response);
+```
+
 ## License
 
 The DTDC PHP SDK is released under the MIT License. See [LICENSE](LICENSE) file for more details.
