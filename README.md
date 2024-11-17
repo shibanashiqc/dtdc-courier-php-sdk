@@ -11,7 +11,7 @@ Unofficial PHP library for [DTDC](https://www.dtdc.in/integrated-e-commerce-logi
 -   If your project using composer, run the below command
 
 ```
-composer require shibanashiqc/phone-pay-php
+composer require shibanashiqc/dtdc-courier-php-sdk
 ```
 
 - If you are not using composer, download the latest release from [the releases section](https://github.com/shibanashiqc/dtdc-courier-php-sdk/releases).
