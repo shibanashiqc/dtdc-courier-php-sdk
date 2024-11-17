@@ -121,6 +121,14 @@ $response = $client->base->cancelShipment([
 print_r($response);
 ```
 
+### shippingAmount
+```php
+// type of zone : City, Region, Zone, Metro, Rol-A
+$response = $client->base->shippingAmount(50, 'City');
+print_r($response);
+
+```
+
 ## License
 
 The DTDC PHP SDK is released under the MIT License. See [LICENSE](LICENSE) file for more details.
