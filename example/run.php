@@ -44,6 +44,8 @@ Config::addPieceDetail([
     
 
 
+
+
 $config = Config::$config;
 $response = $client->base->createNewShipment($config);
 print_r($response);
@@ -52,4 +54,8 @@ $response = $client->base->getShippingLabel('7X6548766');
 print_r($response);
 
 $response = $client->base->getTrackingStatus('7X6548766');
+print_r($response);
+
+// type of zone : City, Region, Zone, Metro, Rol-A
+$response = $client->base->shippingAmount(50, 'City');
 print_r($response);
