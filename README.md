@@ -41,7 +41,7 @@ api-key, x_access_token, customer_code
 use Shibanashiqc\DtdcCourierPhpSdk\DTDC;
 use Shibanashiqc\DtdcCourierPhpSdk\Config;
 
-$client = new DTDC('your_api_key', 'your_access_token');
+$client = new DTDC('your_api_key', 'your_access_token', false);
 $client->setCustomerCode('customer_code');
 
 Config::setShippingInfo([
