@@ -126,7 +126,11 @@ print_r($response);
 // type of zone : City, Region, Zone, Metro, Rol-A
 $response = $client->base->shippingAmount(50, 'City');
 print_r($response);
-
+```
+### getPincodeInfo
+```php
+$response = $client->base->getPincodeInfo('676552', '600040');
+print_r($response);
 ```
 
 ## License
