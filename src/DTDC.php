@@ -8,7 +8,7 @@ class DTDC {
     static $x_access_token = '';
     static $devlopment_url = 'https://demodashboardapi.shipsy.in/api/';
     static $production_url = 'https://dtdcapi.shipsy.io/api/';
-    static $pincode_api_url = 'https://smarttrack.ctbsplus.dtdc.com/ratecalapi/PincodeApiCall';
+    static $pincode_api_url = 'http://smarttrack.ctbsplus.dtdc.com/ratecalapi/PincodeApiCall';
     
     static $dev_token_generation_api_url = 'https://dtdcstagingapi.dtdc.com/dtdc-tracking-api/dtdc-api/api/dtdc/authenticate';
     static $prod_token_generation_api_url = 'https://blktracksvc.dtdc.com/dtdc-api/api/dtdc/authenticate';

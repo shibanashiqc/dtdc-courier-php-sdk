@@ -22,8 +22,15 @@ class DTDCBase
     {
         $this->dtdc = $dtdc;
     }
-
-    public function getPincodeRate($org_pincode, $des_ppincode)
+    
+    /**
+     * getPincodeInfo
+     *
+     * @param  mixed $org_pincode
+     * @param  mixed $des_ppincode
+     * @return array
+     */
+    public function getPincodeInfo($org_pincode, $des_ppincode)
     {
         try {
             $client = new Client();

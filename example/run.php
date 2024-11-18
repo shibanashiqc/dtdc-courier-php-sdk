@@ -43,7 +43,8 @@ Config::addPieceDetail([
 ]);
     
 
-
+$response = $client->base->getPincodeInfo('676552', '600040');
+print_r($response);
 
 
 $config = Config::$config;
