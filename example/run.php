@@ -61,5 +61,5 @@ print_r($response);
 $response = $client->base->shippingAmount(50, 'City');
 print_r($response);
 
-$response = $client->base->shippingCost(50, '676552', '673122', 'south');
+$response = $client->base->shippingCost(50, '676552', '110001', 'south');
 print_r($response);

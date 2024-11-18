@@ -345,7 +345,10 @@ class DTDCBase
 
         if($zone == $current_zone){
             $zone = 'Region';
-        }else{
+        }elseif($zone == 'north'){
+            $zone = 'Metro';
+        }
+        else{
             $zone = 'Zone';
         }
         
