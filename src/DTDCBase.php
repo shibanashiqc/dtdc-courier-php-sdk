@@ -257,4 +257,111 @@ class DTDCBase
             ];
         }
     }
+        
+    /**
+     * getRegionFromLatLong
+     *
+     * @param  mixed $latitude
+     * @param  mixed $longitude
+     * @return string
+     */
+    public function getRegionFromLatLong($latitude, $longitude) {
+        $regions = [
+            "north" => [
+                "lat_min" => 28.0, 
+                "lat_max" => 37.0,
+                "lon_min" => 68.0,
+                "lon_max" => 97.0,
+            ],
+            "south" => [
+                "lat_min" => 8.0, 
+                "lat_max" => 20.0,
+                "lon_min" => 76.0, 
+                "lon_max" => 84.0,
+            ],
+            "west" => [
+                "lat_min" => 15.0,
+                "lat_max" => 28.0,
+                "lon_min" => 68.0,
+                "lon_max" => 76.0,
+            ],
+            "east" => [
+                "lat_min" => 20.0,
+                "lat_max" => 28.0,
+                "lon_min" => 84.0,
+                "lon_max" => 97.0,
+            ],
+        ];
+    
+        foreach ($regions as $region => $bounds) {
+            if (
+                $latitude >= $bounds['lat_min'] && $latitude <= $bounds['lat_max'] &&
+                $longitude >= $bounds['lon_min'] && $longitude <= $bounds['lon_max']
+            ) {
+                return $region;
+            }
+        }
+    
+        return '';
+    }
+        
+    /**
+     * shippingCost
+     *
+     * @param  mixed $weight
+     * @param  mixed $org_pincode
+     * @param  mixed $des_ppincode
+     * @param  mixed $current_zone
+     * @return array
+     */
+    public function shippingCost($weight, $org_pincode, $des_ppincode, $current_zone)
+    {
+        $pincode_info = $this->getPincodeInfo($org_pincode, $des_ppincode);
+        if ($pincode_info['status'] != 200) {
+            return [
+                'status' => 500,
+                'error' => 'Unable to get pincode information',
+            ];
+        }
+        
+        $json_data = json_decode($pincode_info['body'], true);
+
+        if(!isset($json_data['ZIPCODE_RESP'][0]['MESSAGE']) || $json_data['ZIPCODE_RESP'][0]['MESSAGE'] != 'SUCCESS')
+        {
+            return [
+                'status' => 500,
+                'error' => 'Invalid pincode information',
+            ];
+        }
+        
+        
+        $zone = $this->getRegionFromLatLong($json_data['SERV_BR'][0]['LATITUDE'], $json_data['SERV_BR'][0]['LONGITUDE']);
+        if (!$zone) {
+            return [
+                'status' => 500,
+                'error' => 'Unable to determine region from pincode information',
+            ];
+        }
+
+        if($zone == $current_zone){
+            $zone = 'Region';
+        }else{
+            $zone = 'Zone';
+        }
+        
+        $shipping_amount = $this->shippingAmount($weight, $zone);
+        if ($shipping_amount['status'] != 200) {
+            return [
+                'status' => 500,
+                'error' => $shipping_amount['error'],
+            ];
+        }
+
+        return [
+            'status' => 200,
+            'total_cost' => $shipping_amount['total_cost'],
+            'details' => $shipping_amount['details'],
+            'zone' => $zone,
+        ];
+    }
 }

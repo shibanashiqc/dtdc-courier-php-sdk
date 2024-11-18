@@ -60,3 +60,6 @@ print_r($response);
 // type of zone : City, Region, Zone, Metro, Rol-A
 $response = $client->base->shippingAmount(50, 'City');
 print_r($response);
+
+$response = $client->base->shippingCost(50, '676552', '673122', 'south');
+print_r($response);
