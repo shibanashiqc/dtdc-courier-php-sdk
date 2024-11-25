@@ -291,6 +291,13 @@ class DTDCBase
                 "lon_min" => 84.0,
                 "lon_max" => 97.0,
             ],
+            "kerala" => [
+                "lat_min" => 8.17,  
+                "lat_max" => 12.75, 
+                "lon_min" => 74.50, 
+                "lon_max" => 77.50, 
+        ],
+            
         ];
     
         foreach ($regions as $region => $bounds) {
